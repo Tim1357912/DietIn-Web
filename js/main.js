@@ -676,4 +676,10 @@ const initHeroDecoration = () => {
 document.addEventListener('DOMContentLoaded', () => {
     initHeroDecoration();
     // ... existing initialization code ...
-}); 
+});
+
+
+    function downloadApp() {
+        window.location.href = "https://drive.google.com/uc?export=download&id=1DNBspmF-Suo3KqlxV_Sr4z3yRo09z8oM";
+    }
+
