@@ -1,4 +1,4 @@
-# DietIn Web
+# DietIn
 
 DietIn adalah aplikasi mobile yang membantu pengguna dalam mencapai tujuan kesehatan mereka melalui rencana diet yang dipersonalisasi, pencatatan makanan, dan perencanaan makan otomatis.
 
