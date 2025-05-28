@@ -574,4 +574,106 @@ document.querySelectorAll('.feature-icon, .step-number').forEach(element => {
 const ctaButton = document.querySelector('.cta-button');
 if (ctaButton) {
     ctaButton.classList.add('animate-pulse');
-} 
+}
+
+// Dark Mode Toggle
+const initDarkMode = () => {
+    const themeToggle = document.createElement('button');
+    themeToggle.className = 'theme-toggle';
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    themeToggle.setAttribute('aria-label', 'Toggle dark mode');
+    
+    // Add to navbar
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.appendChild(themeToggle);
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    // Toggle theme
+    themeToggle.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark-mode');
+        themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+};
+
+// Initialize dark mode when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initDarkMode();
+    // ... existing initialization code ...
+});
+
+// Interactive Hero Decoration
+const initHeroDecoration = () => {
+    const decorationContainer = document.querySelector('.decoration-container');
+    const decorationElements = document.querySelectorAll('.decoration-element');
+    
+    if (!decorationContainer) return;
+    
+    // Mouse move effect
+    document.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const { left, top, width, height } = decorationContainer.getBoundingClientRect();
+        
+        // Calculate mouse position relative to container
+        const x = (clientX - left) / width;
+        const y = (clientY - top) / height;
+        
+        // Update decoration elements
+        decorationElements.forEach((element, index) => {
+            const speed = (index + 1) * 0.5;
+            const moveX = (x - 0.5) * speed * 50;
+            const moveY = (y - 0.5) * speed * 50;
+            
+            // Add 3D rotation effect
+            const rotateX = (y - 0.5) * 20;
+            const rotateY = (x - 0.5) * -20;
+            
+            element.style.transform = `translate(${moveX}px, ${moveY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            
+            // Update opacity based on mouse position
+            const distance = Math.sqrt(Math.pow(x - 0.5, 2) + Math.pow(y - 0.5, 2));
+            const opacity = 0.1 + (1 - distance) * 0.2;
+            element.style.opacity = opacity;
+        });
+        
+        // Update container perspective
+        decorationContainer.style.transform = `perspective(1000px) rotateX(${(y - 0.5) * 5}deg) rotateY(${(x - 0.5) * -5}deg)`;
+    });
+    
+    // Reset position on mouse leave
+    decorationContainer.addEventListener('mouseleave', () => {
+        decorationElements.forEach(element => {
+            element.style.transform = '';
+            element.style.opacity = '0.1';
+        });
+        decorationContainer.style.transform = '';
+    });
+    
+    // Add hover effect to floating circles
+    const floatingCircles = document.querySelectorAll('.floating-circle');
+    floatingCircles.forEach(circle => {
+        circle.addEventListener('mouseenter', () => {
+            circle.style.borderColor = 'var(--primary)';
+            circle.style.opacity = '0.4';
+            circle.style.transform = 'scale(1.1)';
+        });
+        
+        circle.addEventListener('mouseleave', () => {
+            circle.style.borderColor = '';
+            circle.style.opacity = '0.2';
+            circle.style.transform = '';
+        });
+    });
+};
+
+// Initialize hero decoration when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initHeroDecoration();
+    // ... existing initialization code ...
+}); 
