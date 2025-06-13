@@ -2413,7 +2413,7 @@ class ModernWebEffects {
     
         // Event listener untuk tombol Ya, Unduh
         document.getElementById("confirmDownload").addEventListener("click", function() {
-            window.location.href = "https://drive.google.com/file/d/1NRCkgbHb2AatGXOoYnsJa2N91SrHHRUR/view?usp=sharing";
+            window.location.href = "https://drive.google.com/file/d/1TV28z4Zli6-2yx0nGfvJ9F84296g-3qp/view?usp=sharing";
             document.getElementById("downloadModal").style.display = "none";
         });
     
