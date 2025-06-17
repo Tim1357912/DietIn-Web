@@ -2413,7 +2413,7 @@ class ModernWebEffects {
     
         // Event listener untuk tombol Ya, Unduh
         document.getElementById("confirmDownload").addEventListener("click", function() {
-            window.location.href = "https://github.com/Tim1357912/dietIn-release/releases/download/V2.0.0/DietIn.apk";
+            window.location.href = "https://github.com/Tim1357912/dietIn-release/releases/download/untagged-e1faed0060c53db5811b/DietIn.apk";
             document.getElementById("downloadModal").style.display = "none";
         });
     
