@@ -7,6 +7,269 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Journey section image styles */
+        .step-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step-image2 {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .step-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .step-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .step-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .step-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .step-image:hover::after {
+            opacity: 1;
+        }
+        
+        /* Update journey step to accommodate images */
+        .journey-step {
+            position: relative;
+            padding-top: 0; /* Remove top padding since image is now at top */
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Responsive adjustments for journey images */
+        @media (max-width: 768px) {
+            .step-image {
+                height: 180px;
+                margin-bottom: 1rem;
+            }
+            
+            .step-number {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                top: 10px;
+                right: 10px;
+            }
+        }
+        
+        /* Existing styles would be in main.css - Adding team section styles */
+        .team {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .team .section-title {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .team .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .team-card:hover::before {
+            opacity: 1;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .team-nim {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+        }
+        
+        .team-role {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+        
+        .team-social {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-social a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .team-social a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .team .section-title {
+                font-size: 2rem;
+            }
+            
+            .team-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Animation for floating elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .team-card:nth-child(1) { animation: float 6s ease-in-out infinite; }
+        .team-card:nth-child(2) { animation: float 6s ease-in-out infinite 2s; }
+        .team-card:nth-child(3) { animation: float 6s ease-in-out infinite 4s; }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -15,7 +278,6 @@
             <a href="#" class="logo">Diet<span>In</span></a>
             <div class="nav-links">
                 <a href="#features">Fitur</a>
-                <a href="#pricing">Harga</a>
                 <a href="#support">Dukungan</a>
                 <button class="nav-button" onclick="downloadApp()">Unduh Aplikasi</button>
             </div>
@@ -28,7 +290,9 @@
                 <h1 class="hero-title">Transformasikan Perjalanan Kesehatan Anda dengan <span>DietIn</span></h1>
                 <p class="hero-description">Pendamping diet personal Anda yang membantu mencapai tujuan kesehatan melalui rencana makan yang dipersonalisasi, pelacakan cerdas, dan bimbingan ahli.</p>
                 <div class="hero-buttons">
-                    <button class="hero-button primary-button">Mulai Sekarang</button>
+                    <a href="https://github.com/Naomikazzayara16/DietIn.git" target="_blank" class="hero-button primary-button" style="text-decoration: none; color: inherit;">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                     <button class="hero-button secondary-button">Pelajari Lebih Lanjut</button>
                 </div>
             </div>
@@ -89,30 +353,73 @@
             <p class="section-subtitle">Ikuti langkah-langkah sederhana ini untuk mencapai tujuan kesehatan Anda dengan sistem dukungan komprehensif kami.</p>
             <div class="journey-steps">
                 <div class="journey-step">
+                    <div class="step-image">
+                        <img src="img/1.jpg" alt="Menetapkan Tujuan Diet" />
+                    </div>
                     <div class="step-number">1</div>
                     <h3 class="step-title">Tetapkan Tujuan Anda</h3>
                     <p class="step-description">Mulai dengan menentukan tujuan kesehatan Anda - apakah itu penurunan berat badan, peningkatan massa otot, atau mempertahankan gaya hidup sehat.</p>
                 </div>
                 <div class="journey-step">
+                    <div class="step-image">
+                        <img src="img/2.jpg" alt="Rencana Diet Personal" />
+                    </div>
                     <div class="step-number">2</div>
                     <h3 class="step-title">Dapatkan Rencana Anda</h3>
                     <p class="step-description">Terima rencana diet yang disesuaikan berdasarkan tujuan, preferensi, dan gaya hidup Anda setelah penilaian singkat.</p>
                 </div>
                 <div class="journey-step">
+                    <div class="step-image">
+                        <img src="img/3.jpg" alt="Tracking Makanan" />
+                    </div>
                     <div class="step-number">3</div>
                     <h3 class="step-title">Lacak & Pantau</h3>
                     <p class="step-description">Gunakan alat intuitif kami untuk mencatat makanan, melacak kemajuan, dan tetap bertanggung jawab terhadap tujuan Anda.</p>
                 </div>
                 <div class="journey-step">
+                    <div class="step-image">
+                        <img src="img/4.jpg" alt="Hasil Diet Sukses" />
+                    </div>
                     <div class="step-number">4</div>
                     <h3 class="step-title">Capai Hasil</h3>
-                    <p class="step-description">Pantau kemajuan Anda dengan analitik detail dan dapatkan dukungan dari komunitas dan ahli kami.</p>
+                    <p class="step-description">Pantau kemajuan Anda dengan analitik detail</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="team-container">
+            <h2 class="section-title">Tim Developer</h2>
+            <p class="section-subtitle">Bertemu dengan tim kreatif yang mengembangkan DietIn untuk membantu perjalanan kesehatan Anda</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/nomi.jpg" alt="Nomi" onerror="this.style.display='none'; this.parentNode.innerHTML='SD';">
+                    </div>
+                    <h3 class="team-name">Aisyah Naomi Kazzayara</h3>
+                    <div class="team-nim">231511001</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/zuhriwebp.webp" alt="Ahmad Developer" onerror="this.style.display='none'; this.parentNode.innerHTML='AR';">
+                    </div>
+                    <h3 class="team-name">Ikhsan Zuhri Al Ghifary</h3>
+                    <div class="team-nim">231511015</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="img/Timothy.webp" alt="Maya Developer" onerror="this.style.display='none'; this.parentNode.innerHTML='MP';">
+                    </div>
+                    <h3 class="team-name">Timothy Elroy</h3>
+                    <div class="team-nim">231511031</div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
+    <!-- <section id="pricing" class="pricing">
         <div class="pricing-container">
             <h2 class="section-title">Pilih Paket Anda</h2>
             <div class="pricing-grid">
@@ -155,7 +462,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- CTA Section -->
     <section class="cta">
         <div class="cta-container">
@@ -171,16 +478,12 @@
                 <h3>DietIn</h3>
                 <p>Pendamping Anda dalam mencapai tujuan kesehatan dengan rencana diet personal dan alat cerdas.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             <div class="footer-column">
                 <h3>Produk</h3>
                 <ul class="footer-links">
                     <li><a href="#features">Fitur</a></li>
-                    <li><a href="#pricing">Harga</a></li>
                     <li><a href="#" onclick="downloadApp()">Unduh</a></li>
                 </ul>
             </div>
